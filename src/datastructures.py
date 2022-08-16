@@ -19,17 +19,28 @@ class FamilyStructure:
     def _generateId(self):
         return randint(0, 99999999)
 
-    def add_member(self, member):
-        # fill this method and update the return
-        pass
+    def add_member(self, member: dict):
+        mem = member
+        mem['last_name'] = self.last_name
+        
+        if 'id' not in member.keys():
+            mem['id'] = self._generateId()
+        self._members.append(mem)
+        
 
-    def delete_member(self, id):
-        # fill this method and update the return
-        pass
+    def delete_member(self, id: int):
+       self._members.remove(self.get_member(id))
 
-    def get_member(self, id):
-        # fill this method and update the return
-        pass
+    def get_member(self, id: int):
+        for member in self._members:
+            if member['id'] == id:
+                return member
+            
+            return 'member not found'
+        # return list(filter(lambda x: x['id'] == id, self.members))
+    
+        # if member:
+        #     return member.pop()
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
