@@ -36,7 +36,7 @@ class FamilyStructure:
             if member['id'] == id:
                 return member
             
-            return 'member not found'
+        return 'member not found'
         # return list(filter(lambda x: x['id'] == id, self.members))
     
         # if member:
